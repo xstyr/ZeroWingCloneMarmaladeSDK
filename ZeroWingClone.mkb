@@ -1,0 +1,35 @@
+#!/usr/bin/env mkb
+
+options
+{
+    module_path="../modules"
+}
+
+subprojects
+{
+	iw2d
+}
+
+files
+{
+    [source]
+    (source)
+    main.cpp
+    input.cpp
+    entity.cpp
+    physics.cpp
+    resourceManager.cpp
+    animator.cpp
+
+    input.h
+    entity.h
+    physics.h
+    resourceManager.h
+    animator.h
+}
+
+assets
+{
+    (data)
+    textures
+}
