@@ -24,6 +24,7 @@ public:
     CIwFVec2 pos;
     CIwFVec2 vec;
     CIwFVec2 size;
+    void *pObjArray;
     std::string name;
     bool remove = false;
     bool damageTaken = false;
@@ -52,9 +53,6 @@ class Bullet : public Entity {
 public:
     Bullet (float x, float y, float angle) : Entity(x, y, angle){
         size = CIwFVec2(5,5);
-        remove = false;
-        damageTaken = false;
-        health = 100;
     }
     virtual void    draw();
     virtual ~Bullet(){};

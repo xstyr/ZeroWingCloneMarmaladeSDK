@@ -58,24 +58,12 @@ int main(){
 
         
         if(g_pInput->isKeyDown(s3eKeySpace)){
-            if(++counter % 10 == 0){
+            if(++counter % 2 == 0){
                 Bullet * bullet = new Bullet(spaceship->pos.x +spaceship->size.x  + 15,
                                              spaceship->pos.y + 0.5*spaceship->size.y - 2, -PI/2);
-                bullet->vec.x = 2;
+                bullet->vec.x = 8;
                 bullet->name = "bullet";
                 g_ResManager->addEntity(*bullet);
-                
-                Bullet * bullet2 = new Bullet(spaceship->pos.x +spaceship->size.x,
-                                             spaceship->pos.y + 0.5*spaceship->size.y + 6, -PI/2);
-                bullet2->vec.x = 2;
-                bullet2->name = "bullet";
-                g_ResManager->addEntity(*bullet2);
-                
-                Bullet * bullet3 = new Bullet(spaceship->pos.x +spaceship->size.x,
-                                             spaceship->pos.y + 0.5*spaceship->size.y - 10, -PI/2);
-                bullet3->vec.x = 2;
-                bullet3->name = "bullet";
-                g_ResManager->addEntity(*bullet3);
             }
         }
         

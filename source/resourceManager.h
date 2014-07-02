@@ -19,6 +19,9 @@ private:
         CIwArray<Enemy*> enemyArray;
         CIwArray<Bullet*> bulletArray;
         SpaceShip * spaceShip;
+        void remove(Bullet * e);
+        void remove(Enemy * e);
+        
 public:
     void addEntity(SpaceShip & e);
     void addEntity(Enemy & e);
@@ -30,8 +33,6 @@ public:
     SpaceShip & getSpaceShip();
     ~ResourceManager();
     void remove(Entity * e);
-    void remove(Enemy * e);
-    void remove(Bullet * e);
 };
 
 

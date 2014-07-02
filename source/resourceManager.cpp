@@ -17,11 +17,13 @@ void ResourceManager::addEntity(SpaceShip & entity){
 void ResourceManager::addEntity(Enemy & entity){
     entityArray.push_back(&entity);
     enemyArray.push_back(&entity);
+    entity.pObjArray = &enemyArray;
 }
 
 void ResourceManager::addEntity(Bullet &entity){
     entityArray.push_back(&entity);
     bulletArray.push_back(&entity);
+    entity.pObjArray = &bulletArray;
 }
 
 SpaceShip & ResourceManager::getSpaceShip(){
@@ -48,28 +50,32 @@ ResourceManager::~ResourceManager(){
     entityArray.clear();
 }
 
-void ResourceManager::remove(Entity * e){
-    //erase will shift-copy elements up, adjusting array info
+void ResourceManager::remove(Entity *e){
     int index = entityArray.find(e);
     entityArray.erase(index);
-
-    if(typeid(e) == typeid(Enemy)){
-        index = enemyArray.find((Enemy*)e);
-        if(index != -1){
-            enemyArray.erase(index);
-        }
-    }
     
-    if(typeid(e) == typeid(SpaceShip)){
-        delete spaceShip;
+    //look if the object is assigned to the array
+    if(e->pObjArray == &enemyArray){
+        this->remove((Enemy*) e);
     }
-    
-    if(typeid(e) == typeid(Bullet)){
-        index = bulletArray.find((Bullet*)e);
-        if(index != -1){
-            bulletArray.erase(index);
-        }
+    if(e->pObjArray == &bulletArray){
+        this->remove((Bullet*) e);
     }
     
     delete e;
+    
+}
+
+ void ResourceManager::remove(Bullet *e){
+    int index = bulletArray.find((Bullet*)e);
+    if(index != -1){
+        bulletArray.erase(index);
+    }
+}
+
+ void ResourceManager::remove(Enemy *e){
+    int index = enemyArray.find((Enemy*)e);
+    if(index != -1){
+        enemyArray.erase(index);
+    }
 }

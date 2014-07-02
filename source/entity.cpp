@@ -18,8 +18,6 @@ Entity::Entity(float x, float y, float incAngle)
     vec = CIwFVec2(0,0);
     size = CIwFVec2(100,100);
     pos = CIwFVec2(x,y);
-    
-    
     std::cout << "INIT";
 }
 
